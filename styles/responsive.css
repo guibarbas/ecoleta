@@ -1,3 +1,9 @@
+@media (min-width: 1700px) {
+    #page-home {
+        background-position-x: 40vw;
+    }
+}
+
 @media (max-width: 900px) {
     #page-home {
         background-position-x: 70vw;
@@ -18,10 +24,31 @@
     #page-home main {
         align-items: center;
     }
-}
 
-@media (min-width: 1700px) {
-    #page-home {
-        background-position-x: 40vw;
+    #page-search-results .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #page-search-results .cards img {
+        height: 200px;
     }
 }
+
+@media (max-width: 600px) {
+    #page-search-results .cards {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    #page-search-results .cards img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 500px) {
+    #modal .close a {
+        transition: 400ms ease-in-out;
+        right: 10%;
+    }
+}
+
