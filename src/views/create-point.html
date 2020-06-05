@@ -8,11 +8,12 @@
 
 {% block styles %}
     <link rel="stylesheet" href="/styles/create-point.css">
+    <link rel="stylesheet" href="/styles/modal.css">
 {% endblock styles %}
 
 {% block content %}
     {% include "partials/page-header.html" %}
-    <form action="">
+    <form action="/savepoint" method="POST">
         <h1>Cadastro do ponto de coleta</h1>
         <fieldset>
             <legend>
@@ -35,13 +36,13 @@
                     <input type="text" name="address" required="required">
                 </div>
                 <div class="field">
-                    <label for="address2">Número/Complemento</label>
+                    <label for="address2">Número</label>
                     <input type="text" name="address2">
                 </div>
             </div>
             <div class="field-group">
                 <div class="field">
-                    <label for="state">Estado</label>
+                    <label for="uf">Estado</label>
                     <select name="uf" required="required">
                         <option value="">Selecione o estado</option>
                     </select>
@@ -65,27 +66,27 @@
             </legend>
 
             <div class="items-grid">
-                <li data-id="1">
+                <li data-id="Lâmpadas">
                     <img src="/assets/lampadas.svg" alt="Lâmpadas">
                     <spam>Lâmpadas</spam>
                 </li>
-                <li data-id="2">
+                <li data-id="Pilhas e Baterias">
                     <img src="/assets/baterias.svg" alt="Pilhas e Baterias">
                     <spam>Pilhas e Baterias</spam>
                 </li>
-                <li data-id="3">
+                <li data-id="Papeis e Papelão">
                     <img src="/assets/papeis-papelao.svg" alt="Papeis e Papelão">
                     <spam>Papeis e Papelão</spam>
                 </li>
-                <li data-id="4">
+                <li data-id="Resíduos Eletrônicos">
                     <img src="/assets/eletronicos.svg" alt="Resíduos Eletrônicos">
                     <spam>Resíduos Eletrônicos</spam>
                 </li>
-                <li data-id="5">
+                <li data-id="Resíduos Orgânicos">
                     <img src="/assets/organicos.svg" alt="Resíduos Orgânicos">
                     <spam>Resíduos Orgânicos</spam>
                 </li>
-                <li data-id="6">
+                <li data-id="Óleo de Cozinha">
                     <img src="/assets/oleo.svg" alt="Óleo de Cozinha">
                     <spam>Óleo de Cozinha</spam>
                 </li>
@@ -96,6 +97,15 @@
         <button type="submit">Cadastrar ponto de coleta</button>
     </form>
 {% endblock content %}
+
+{% block modal %}
+    {% if saved %}
+        {% include "partials/point-created.html" %}}
+    {% endif %}
+    {% if saved == false %}
+        {% include "partials/fail-create-point.html" %}}
+     {% endif %}
+{% endblock modal %}
 
 {% block scripts %}
     <script src="/scripts/create-point.js"></script>
